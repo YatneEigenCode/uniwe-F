@@ -140,7 +140,6 @@ public class MainActivity extends ActionBarActivity {
          * number.
          */
         public static PlaceholderFragment newInstance(int sectionNumber) {
-            getSupportActionBar().setTitle("PlaceholderFragment newInstance");
             PlaceholderFragment fragment = new PlaceholderFragment();
             Bundle args = new Bundle();
             args.putInt(ARG_SECTION_NUMBER, sectionNumber);
@@ -149,13 +148,16 @@ public class MainActivity extends ActionBarActivity {
         }
 
         public PlaceholderFragment() {
-            getSupportActionBar().setTitle("constr PlaceholderFragment");
         }
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+
+            getSupportActionBar().setTitle("PlaceholderFragment.onCreateView");
+            TextView tv = (TextView) rootView.findViewById(android.R.id.section_label);
+            tv.setTitle("foo");
             return rootView;
         }
     }//class PlaceholderFragment
