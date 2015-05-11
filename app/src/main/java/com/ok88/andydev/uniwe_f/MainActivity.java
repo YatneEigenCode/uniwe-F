@@ -150,7 +150,9 @@ public class MainActivity extends ActionBarActivity {
 
             TextView tv = (TextView) rootView.findViewById(R.id.section_label);
             Bundle args = getArguments();
-            tv.setText(Integer.toString(args.getInt(ARG_SECTION_NUMBER)));
+            //tv.setText(Integer.toString(args.getInt(ARG_SECTION_NUMBER)));
+            String s = new SectionsPagerAdapter(null).getPageTitle(args.getInt(ARG_SECTION_NUMBER))
+            tv.setText(s);
             return rootView;
         }
     }//class PlaceholderFragment
