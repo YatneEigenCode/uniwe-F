@@ -51,10 +51,10 @@ public class MainActivity extends ActionBarActivity {
         // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
-        getSupportActionBar().setTitle("findView");
+        //getSupportActionBar().setTitle("findView");
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.pager);
-        getSupportActionBar().setTitle("set Adapter");
+        //getSupportActionBar().setTitle("set Adapter");
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
     }
@@ -98,17 +98,20 @@ public class MainActivity extends ActionBarActivity {
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
+            getSupportActionBar().setTitle("getItem");
             return PlaceholderFragment.newInstance(position + 1);
         }
 
         @Override
         public int getCount() {
             // Show 3 total pages.
+            getSupportActionBar().setTitle("getCount");
             return 3;
         }
 
         @Override
         public CharSequence getPageTitle(int position) {
+            getSupportActionBar().setTitle("getPageTitle");
             Locale l = Locale.getDefault();
             switch (position) {
                 case 0:
@@ -146,6 +149,7 @@ public class MainActivity extends ActionBarActivity {
         }
 
         public PlaceholderFragment() {
+            getSupportActionBar().setTitle("constr PlaceholderFragment");
         }
 
         @Override
