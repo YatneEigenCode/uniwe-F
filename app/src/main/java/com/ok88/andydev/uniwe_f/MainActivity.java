@@ -1,5 +1,5 @@
 //5-7-15  JChoy Empty tab app created using Android Studio on PC
-//5-10-15 JChoy Show different text on each tab.
+//5-10-15 JChoy Get string values directly from res.
 
 
 package com.ok88.andydev.uniwe_f;
@@ -149,10 +149,10 @@ public class MainActivity extends ActionBarActivity {
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
 
             TextView tv = (TextView) rootView.findViewById(R.id.section_label);
-            Bundle args = getArguments();
-            //tv.setText(Integer.toString(args.getInt(ARG_SECTION_NUMBER)));
-            String s = new SectionsPagerAdapter(null).getPageTitle(args.getInt(ARG_SECTION_NUMBER))
-            tv.setText(s);
+            int n = getArguments().getInt(ARG_SECTION_NUMBER);
+            if (n==1) tv.setText(getString(R.string.title_section1));
+            if (n==2) tv.setText(getString(R.string.title_section2));
+            if (n==3) tv.setText(getString(R.string.title_section3));
             return rootView;
         }
     }//class PlaceholderFragment
