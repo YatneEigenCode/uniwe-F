@@ -1,3 +1,7 @@
+//5-7-15  JChoy Empty tab app created using Android Studio on PC
+//5-10-15 JChoy Debugging using getSupportActionBar().setTitle()
+
+
 package com.ok88.andydev.uniwe_f;
 
 import java.util.Locale;
@@ -42,12 +46,15 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
 
 
+        getSupportActionBar().setTitle("onCreate");
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
+        getSupportActionBar().setTitle("findView");
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.pager);
+        getSupportActionBar().setTitle("set Adapter");
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
     }
@@ -84,6 +91,7 @@ public class MainActivity extends ActionBarActivity {
 
         public SectionsPagerAdapter(FragmentManager fm) {
             super(fm);
+            getSupportActionBar().setTitle("constr SectionsPagerAdapter");
         }
 
         @Override
@@ -112,7 +120,7 @@ public class MainActivity extends ActionBarActivity {
             }
             return null;
         }
-    }
+    }//class SectionsPagerAdapter
 
     /**
      * A placeholder fragment containing a simple view.
@@ -129,6 +137,7 @@ public class MainActivity extends ActionBarActivity {
          * number.
          */
         public static PlaceholderFragment newInstance(int sectionNumber) {
+            getSupportActionBar().setTitle("PlaceholderFragment newInstance");
             PlaceholderFragment fragment = new PlaceholderFragment();
             Bundle args = new Bundle();
             args.putInt(ARG_SECTION_NUMBER, sectionNumber);
@@ -145,6 +154,6 @@ public class MainActivity extends ActionBarActivity {
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
             return rootView;
         }
-    }
+    }//class PlaceholderFragment
 
-}
+}//MainActivity
