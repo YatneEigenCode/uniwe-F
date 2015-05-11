@@ -1,5 +1,5 @@
 //5-7-15  JChoy Empty tab app created using Android Studio on PC
-//5-10-15 JChoy Debugging using getSupportActionBar().setTitle()
+//5-10-15 JChoy Show different text on each tab.
 
 
 package com.ok88.andydev.uniwe_f;
@@ -46,15 +46,12 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
 
 
-        getSupportActionBar().setTitle("onCreate");
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
-        //getSupportActionBar().setTitle("findView");
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.pager);
-        //getSupportActionBar().setTitle("set Adapter");
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
     }
@@ -91,27 +88,23 @@ public class MainActivity extends ActionBarActivity {
 
         public SectionsPagerAdapter(FragmentManager fm) {
             super(fm);
-            getSupportActionBar().setTitle("constr SectionsPagerAdapter");
         }
 
         @Override
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
-            getSupportActionBar().setTitle("getItem");
             return PlaceholderFragment.newInstance(position + 1);
         }
 
         @Override
         public int getCount() {
             // Show 3 total pages.
-            getSupportActionBar().setTitle("getCount");
             return 3;
         }
 
         @Override
         public CharSequence getPageTitle(int position) {
-            getSupportActionBar().setTitle("getPageTitle");
             Locale l = Locale.getDefault();
             switch (position) {
                 case 0:
@@ -155,9 +148,9 @@ public class MainActivity extends ActionBarActivity {
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
 
-            getSupportActionBar().setTitle("PlaceholderFragment.onCreateView");
-            TextView tv = (TextView) rootView.findViewById(android.R.id.section_label);
-            tv.setTitle("foo");
+            TextView tv = (TextView) rootView.findViewById(R.id.section_label);
+            Bundle args = getArguments();
+            tv.setText(getAdapter().getPageTitle(args.getInt(ARG_SECTION_NUMBER)));
             return rootView;
         }
     }//class PlaceholderFragment
