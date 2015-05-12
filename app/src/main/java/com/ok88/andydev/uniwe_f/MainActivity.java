@@ -1,5 +1,5 @@
 //5-7-15  JChoy Empty tab app created using Android Studio on PC
-//5-11-15 JChoy Show wifi name in tab2. static string.
+//5-11-15 JChoy Show wifi name in tab2. include android.grpahics
 
 
 package com.ok88.andydev.uniwe_f;
@@ -26,6 +26,7 @@ import android.net.NetworkInfo;
 import android.net.NetworkInfo.*;
 import android.content.Context;
 import android.util.TypedValue;
+import android.graphics.*;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -74,8 +75,8 @@ public class MainActivity extends ActionBarActivity {
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
-        //wifiName = getWifiName(this);
-        wifiName = "call getWifiName to get SSID";
+        wifiName = getWifiName(this);
+        //wifiName = "call getWifiName to get SSID";
     }
 
 
