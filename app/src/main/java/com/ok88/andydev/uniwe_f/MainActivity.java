@@ -21,6 +21,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.net.wifi.*;
+import android.net.NetworkInfo;
+import android.net.NetworkInfo.*;
+import android.content.Context;
+import android.util.TypedValue;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -39,6 +44,7 @@ public class MainActivity extends ActionBarActivity {
      * The {@link ViewPager} that will host the section contents.
      */
     ViewPager mViewPager;
+    public String wifiName;
 
     public String getWifiName(Context context) {
         WifiManager manager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
@@ -60,7 +66,7 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
+        wifiName = getWifiName(this);
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
@@ -168,10 +174,10 @@ public class MainActivity extends ActionBarActivity {
             if (n==1) tv.setText(getString(R.string.title_section1));
             if (n==3) tv.setText(getString(R.string.title_section3));
             if (n==2) {
-                tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
-                tv.setText(getWifiName, this);
+                tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 28);
+                //tv.setText(wifiName);
             }
-            if (tv.text == null)    tv.setText("No data");
+            if (tv.getText() == null)    tv.setText("No data");
             return rootView;
         }
     }//class PlaceholderFragment
