@@ -1,5 +1,5 @@
 //5-7-15  JChoy Empty tab app created using Android Studio on PC
-//5-10-15 JChoy Get string values directly from res.
+//5-11-15 JChoy Show wifi name in tab2.
 
 
 package com.ok88.andydev.uniwe_f;
@@ -39,6 +39,21 @@ public class MainActivity extends ActionBarActivity {
      * The {@link ViewPager} that will host the section contents.
      */
     ViewPager mViewPager;
+
+    public String getWifiName(Context context) {
+        WifiManager manager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
+        if (manager.isWifiEnabled()) {
+           WifiInfo wifiInfo = manager.getConnectionInfo();
+           if (wifiInfo != null) {
+              DetailedState state = WifiInfo.getDetailedStateOf(wifiInfo.getSupplicantState());
+              if (state == DetailedState.CONNECTED || state == DetailedState.OBTAINING_IPADDR) {
+                  return wifiInfo.getSSID();
+              }
+           }
+        }
+        //        actTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
+        return null;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -151,8 +166,12 @@ public class MainActivity extends ActionBarActivity {
             TextView tv = (TextView) rootView.findViewById(R.id.section_label);
             int n = getArguments().getInt(ARG_SECTION_NUMBER);
             if (n==1) tv.setText(getString(R.string.title_section1));
-            if (n==2) tv.setText(getString(R.string.title_section2));
             if (n==3) tv.setText(getString(R.string.title_section3));
+            if (n==2) {
+                tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
+                tv.setText(getWifiName, this);
+            }
+            if (tv.text == null)    tv.setText("No data");
             return rootView;
         }
     }//class PlaceholderFragment
