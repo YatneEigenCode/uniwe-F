@@ -1,5 +1,5 @@
 //5-7-15  JChoy Empty tab app created using Android Studio on PC
-//5-11-15 JChoy Show wifi name in tab2.
+//5-11-15 JChoy Show wifi name in tab2. static string.
 
 
 package com.ok88.andydev.uniwe_f;
@@ -44,7 +44,7 @@ public class MainActivity extends ActionBarActivity {
      * The {@link ViewPager} that will host the section contents.
      */
     ViewPager mViewPager;
-    public String wifiName;
+    public static String wifiName;
 
     public String getWifiName(Context context) {
         WifiManager manager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
@@ -66,7 +66,6 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        wifiName = getWifiName(this);
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
@@ -75,6 +74,8 @@ public class MainActivity extends ActionBarActivity {
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
+        //wifiName = getWifiName(this);
+        wifiName = "call getWifiName to get SSID";
     }
 
 
@@ -170,14 +171,12 @@ public class MainActivity extends ActionBarActivity {
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
 
             TextView tv = (TextView) rootView.findViewById(R.id.section_label);
+            tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 28);
+            tv.setTextColor(Color.parseColor("#000000"));
             int n = getArguments().getInt(ARG_SECTION_NUMBER);
             if (n==1) tv.setText(getString(R.string.title_section1));
             if (n==3) tv.setText(getString(R.string.title_section3));
-            if (n==2) {
-                tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 28);
-                //tv.setText(wifiName);
-            }
-            if (tv.getText() == null)    tv.setText("No data");
+            if (n==2) tv.setText(wifiName);
             return rootView;
         }
     }//class PlaceholderFragment
