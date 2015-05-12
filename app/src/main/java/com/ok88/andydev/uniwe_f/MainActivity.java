@@ -1,6 +1,6 @@
 //5-7-15  JChoy Empty tab app created using Android Studio on PC
-//5-11-15 JChoy Show wifi name in tab2. include android.grpahics
-
+//5-12-15 JChoy Show wifi name in tab2. include android.grpahics
+//Remember to refresh build after adding uses-permission Manifest
 
 package com.ok88.andydev.uniwe_f;
 
@@ -58,7 +58,6 @@ public class MainActivity extends ActionBarActivity {
               }
            }
         }
-        //        actTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
         return null;
     }
 
